@@ -1320,6 +1320,25 @@ fbq('track', 'PageView');
       }
     });
   });
+
+
+  // 禁用右键菜单
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+});
+
+// 禁用文字选中
+document.addEventListener('selectstart', function(e) {
+  e.preventDefault();
+});
+
+// 禁用 Ctrl+S / Ctrl+U / Ctrl+A
+document.addEventListener('keydown', function(e) {
+  if (e.ctrlKey && (e.key === 's' || e.key === 'u' || e.key === 'a' || e.key === 'c')) {
+    e.preventDefault();
+  }
+});
+
 </script>
 
 </body>

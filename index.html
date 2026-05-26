@@ -17,6 +17,9 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '1266757242198992');
 fbq('track', 'PageView');
 </script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1266757242198992&ev=PageView&noscript=1"
+/></noscript>
 <!-- End Facebook Pixel Code -->
 <style>
   html, body {
@@ -1239,6 +1242,8 @@ fbq('track', 'PageView');
           fired = true;
           if (typeof fbq !== 'undefined') {
             fbq('track', 'ViewContent', {
+              content_name: '桑葉雙瓜茶買1送2優惠',
+              content_category: '三高草本調理',
               value: 1280,
               currency: 'TWD'
             });
@@ -1250,12 +1255,19 @@ fbq('track', 'PageView');
     observer.observe(offerCard);
   })();
 
-  // ===== FB Pixel Lead 事件 + 跳转 =====
+  // ===== FB Pixel Lead + InitiateCheckout 事件 + 跳转 =====
   function fireLeadAndGo() {
     if (typeof fbq !== 'undefined') {
       fbq('track', 'Lead');
+      fbq('track', 'InitiateCheckout', {
+        value: 1280,
+        currency: 'TWD',
+        num_items: 1,
+        content_name: '桑葉雙瓜茶買1送2特惠方案',
+        content_category: '三高草本調理'
+      });
     }
-    // 延迟300ms确保Pixel发送完成再跳转
+    // 延迟300ms确保Pixel兩個事件全部發送完成再跳转
     setTimeout(function() {
       window.location.href = LINE_URL;
     }, 300);
@@ -1320,25 +1332,6 @@ fbq('track', 'PageView');
       }
     });
   });
-
-
-  // 禁用右键菜单
-document.addEventListener('contextmenu', function(e) {
-  e.preventDefault();
-});
-
-// 禁用文字选中
-document.addEventListener('selectstart', function(e) {
-  e.preventDefault();
-});
-
-// 禁用 Ctrl+S / Ctrl+U / Ctrl+A
-document.addEventListener('keydown', function(e) {
-  if (e.ctrlKey && (e.key === 's' || e.key === 'u' || e.key === 'a' || e.key === 'c')) {
-    e.preventDefault();
-  }
-});
-
 </script>
 
 </body>
